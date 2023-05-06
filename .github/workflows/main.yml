@@ -49,3 +49,6 @@ jobs:
         run: echo "my last name is $LOCAL_LAST_NAME "
         env:
           LOCAL_LAST_NAME: "Shehadeh"
+      
+      - name: Print phone number
+        run: echo "${{ secrets.SEC_PHONE }}"
