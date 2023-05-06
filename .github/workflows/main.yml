@@ -1,38 +1,57 @@
-#-------------------------------------------
-#   GIT ACTION EXAMPLES
-#
-#--------------------------------------------
+name: Final_Ex
 
-name: Symple_action
-
-# creating environments for this action
 env:
-  APP_NAME: "MyApp"
-  PACK_NAME: "App_version-${{ github.sha }}"
-# github.sha global env from github
+  GLOBAL_FIRST_NAME: "Atef"
 
-
-# all this code will start (triggered) by push to master branch
 on:
   push:
     branches:
-      -  main
-
+      - main
+     
 jobs:
 
-# this is first job name
-  first_job_name:
-# will run on ubuntu latest version
+  job1:
     runs-on: ubuntu-latest
-
-# steps for first_job_name (like tasks in ansible)
     steps:
-    - name: Print H_W message
-      run : echo "HELLO FROM FIRST_JOB"
-    
-# multiple commands step
-    - name: Multi commands step
-      run : |
-        echo "APP Name : ${{ env.APP_NAME }}"
-        echo " ${{ env.PACK_NAME }}"
-        echo "GoodBuy FROM FIRST_JOB"
+   
+    - name: Print Hello msg
+      run: echo "Hello"
+     
+    - name: ubuntu version
+      run: cat /etc/lsb-release
+     
+    - name: print SHA key
+      run: echo "sha_key_${{ github.sha }}"
+   
+    - name: print 2 sha
+      run: echo "${{ env.SHA_KEY }}"
+ 
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+   
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+    - run: git checkout HEAD^
+   
+    - name: ls -la
+      run: ls -la
+     
+    - name: print all files
+      run: cat *.txt
+     
+    - name: run test.sh
+      run: bash test.sh
+   
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+   
+      - name: Print First Name using env
+        run: echo "my name is ${{ env.GLOBAL_FIRST_NAME }}"
+     
+      - name: Print Last Name by using local
+        run: echo "my last name is $LOCAL_LAST_NAME "
+        env:
+          LOCAL_LAST_NAME: "Shehadeh"
