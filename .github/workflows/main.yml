@@ -52,3 +52,12 @@ jobs:
       
       - name: Print phone number
         run: echo "${{ secrets.SEC_PHONE }}"
+      
+      - name: Print Phone Number
+        run: |
+          if [ "${{ secrets.sa }}" != "${{ secrets.sb }}" ]; then
+            echo "good"
+          else
+            echo "bad"
+          fi
+      
