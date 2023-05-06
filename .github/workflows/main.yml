@@ -8,7 +8,7 @@ name: Symple_action
 # creating environments for this action
 env:
   APP_NAME: "MyApp"
-  PACK_NAME: "App_version-${{ github.sha }}"
+  PACK_NAME: "App_version-$({ github.sha })"
 # github.sha global env from github
 
 
@@ -16,7 +16,7 @@ env:
 on:
   push:
     branches:
-      -  mater
+      -  main
 
 jobs:
 
@@ -33,6 +33,6 @@ jobs:
 # multiple commands step
     - name: Multi commands step
       run : |
-        echo "APP Name : ${{ env.APP_NAME }}"
-        echo " ${{ env.PACK_NAME }}"
+        echo "APP Name : $({ env.APP_NAME })"
+        echo " $({ env.PACK_NAME })"
         echo "GoodBuy FROM FIRST_JOB"
