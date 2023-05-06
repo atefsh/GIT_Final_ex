@@ -1,4 +1,4 @@
-name: Final_EXAM_GIT_ACTIONS
+name: FINAL_EXAM_GIT_ACTIONS
 
 env:
   GLOBAL_FIRST_NAME: "Atef"
@@ -33,7 +33,7 @@ jobs:
       run: ls -la
      
     - name: Print all files
-      run: for file_name in $(ls *.txt); do echo "File name is $file_name"; echo ""; echo "File content is"; echo "$(cat $file_name)" ; done
+      run: for file_name in $(ls *.txt); do echo "File name is $file_name"; echo "File content is"; echo "$(cat $file_name)"; echo "" ; done
      
     - name: Run test.sh BASH Script
       run: bash test.sh
@@ -42,15 +42,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
    
-      - name: Print First Name using env
+      - name: Print First Name using environment variables
         run: echo "My First Name ( from environment ) is ${{ env.GLOBAL_FIRST_NAME }}"
      
-      - name: Print Last Name by using local
+      - name: Print Last Name using local variables
         run: echo "My Last Name ( from local ) is $LOCAL_LAST_NAME "
         env:
           LOCAL_LAST_NAME: "Shehadeh"
       
-      - name: Print phone number
+      - name: Print phone number using secrets variables
         run: echo "My Phone number ( from secrets ) is ${{ secrets.SEC_PHONE }}"
       
       
