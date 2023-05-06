@@ -33,7 +33,7 @@ jobs:
       run: ls -la
      
     - name: Print all files
-      run: for file in (ls ); do echo "File name $file"; cat $file ; done
+      run: for file_name in $(ls *.txt); do echo "File name is $file_name"; echo "\nFile content is\n$(cat $file_name)" ; done
      
     - name: Run test.sh BASH Script
       run: bash test.sh
