@@ -1,4 +1,4 @@
-name: Final_Ex
+name: Final_EXAM_GIT_ACTIONS
 
 env:
   GLOBAL_FIRST_NAME: "Atef"
@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
    
-    - name: Print Hello msg
+    - name: Print Hello message
       run: echo "Hello"
      
-    - name: ubuntu version
-      run: cat /etc/lsb-release
+    - name: Print Ubuntu version
+      run: cat /etc/lsb-release | grep "DISTRIB_DESCRIPTION"
      
-    - name: print SHA key
-      run: echo "sha_key_${{ github.sha }}"
+    - name: Print Last SHA Key
+      run: echo "Last Commit ( SHA ) is ${{ github.sha }}"
  
   job2:
     runs-on: ubuntu-latest
@@ -29,13 +29,13 @@ jobs:
    
     - uses: actions/checkout@v3
    
-    - name: ls -la
+    - name: Print GIT content
       run: ls -la
      
-    - name: print all files
+    - name: Print all files
       run: cat *.txt
      
-    - name: run test.sh
+    - name: Run test.sh BASH Script
       run: bash test.sh
    
   job3:
@@ -43,21 +43,14 @@ jobs:
     steps:
    
       - name: Print First Name using env
-        run: echo "my name is ${{ env.GLOBAL_FIRST_NAME }}"
+        run: echo "My First Name ( from environment ) is ${{ env.GLOBAL_FIRST_NAME }}"
      
       - name: Print Last Name by using local
-        run: echo "my last name is $LOCAL_LAST_NAME "
+        run: echo "My Last Name ( from local ) is $LOCAL_LAST_NAME "
         env:
           LOCAL_LAST_NAME: "Shehadeh"
       
       - name: Print phone number
-        run: echo "${{ secrets.SEC_PHONE }}"
+        run: echo "My Phone number ( from secrets ) is ${{ secrets.SEC_PHONE }}"
       
-      - name: Print Phone Number
-        run: |
-          if [ "${{ secrets.SEC_PHONE }}" == "0526411904" ]; then
-            echo "0526411904"
-          else
-            echo "Failed"
-          fi
       
