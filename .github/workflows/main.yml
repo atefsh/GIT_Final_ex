@@ -8,7 +8,7 @@ name: Symple_action
 # creating environments for this action
 env:
   APP_NAME: "MyApp"
-  PACK_NAME: "App_version-$({ GITHUB_SHA })"
+  PACK_NAME: "App_version-${{ GITHUB_SHA }}"
 # github.sha global env from github
 
 
@@ -33,4 +33,4 @@ jobs:
 # multiple commands step
     - name: Multi commands step
       run : |
-        echo "APP Name : $({ env.APP_NAME })"
+        echo "APP Name : ${{ env.APP_NAME }}"
