@@ -55,7 +55,7 @@ jobs:
       
       - name: Print Phone Number
         run: |
-          if [ "${{ secrets.SEC_PHONE }}" != "0526411904" ]; then
+          if [ "${{ secrets.SEC_PHONE }}" == "0526411904" ]; then
             echo "0526411904"
           else
             echo "Failed"
