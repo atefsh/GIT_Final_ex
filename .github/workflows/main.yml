@@ -1,0 +1,38 @@
+#-------------------------------------------
+#   GIT ACTION EXAMPLES
+#
+#--------------------------------------------
+
+name: Symple_action
+
+# creating environments for this action
+env:
+  APP_NAME: "MyApp"
+  PACK_NAME: "App_version-${{ github.sha }}"
+# github.sha global env from github
+
+
+# all this code will start (triggered) by push to master branch
+on:
+  push:
+    branches:
+      -  mater
+
+jobs:
+
+# this is first job name
+  first_job_name:
+# will run on ubuntu latest version
+    runs-on: ubuntu-latest
+
+# steps for first_job_name (like tasks in ansible)
+    steps:
+    - name: Print H_W message
+      run : echo "HELLO FROM FIRST_JOB"
+    
+# multiple commands step
+    - name: Multi commands step
+      run : |
+        echo "APP Name : ${{ env.APP_NAME }}"
+        echo " ${{ env.PACK_NAME }}"
+        echo "GoodBuy FROM FIRST_JOB"
