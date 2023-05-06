@@ -34,5 +34,3 @@ jobs:
     - name: Multi commands step
       run : |
         echo "APP Name : $({ env.APP_NAME })"
-        echo " $({ env.PACK_NAME })"
-        echo "GoodBuy FROM FIRST_JOB"
